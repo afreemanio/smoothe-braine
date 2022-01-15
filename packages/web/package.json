@@ -1,0 +1,66 @@
+{
+  "private": true,
+  "name": "@smoothe-braine/web",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next -p 3005",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "serve": "next start -p $PORT",
+    "typecheck": "tsc --noEmit",
+    "lint:fix": "eslint --config .eslintrc.commit.js --fix --cache --ext .ts,.tsx src",
+    "prettify": "prettier --write src --ignore-path ../../.prettierignore",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.(js|jsx|json|ts|tsx|html)|!graphql.tsx": [
+      "prettier --write --ignore-path ../../.prettierignore"
+    ],
+    "*.(ts|tsx)|!graphql.tsx": [
+      "eslint --fix --config .eslintrc.commit.js"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL",
+  "dependencies": {
+    "@apollo/client": "3.5.6",
+    "@chakra-ui/react": "1.7.3",
+    "@emotion/react": "11.7.1",
+    "@emotion/styled": "11.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@hookform/resolvers": "2.8.5",
+    "@sentry/nextjs": "6.16.1",
+    "dayjs": "1.10.7",
+    "framer-motion": "5.5.5",
+    "graphql": "15.8.0",
+    "next": "12.0.7",
+    "next-http-proxy-middleware": "1.1.2",
+    "next-transpile-modules": "9.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-dropzone": "11.4.2",
+    "react-hook-form": "7.22.5",
+    "react-icons": "4.3.1",
+    "yup": "0.32.11"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "3.1.1",
+    "@graphql-codegen/cli": "2.3.1",
+    "@graphql-codegen/typescript": "2.4.2",
+    "@graphql-codegen/typescript-operations": "2.2.2",
+    "@graphql-codegen/typescript-react-apollo": "3.2.3",
+    "@types/cookie": "0.4.1",
+    "@types/react": "17.0.38",
+    "@types/react-dom": "17.0.11",
+    "autoprefixer": "^10.4.2",
+    "eslint-config-next": "12.0.7",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.12"
+  }
+}

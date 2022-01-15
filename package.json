@@ -1,0 +1,65 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "1.0.0",
+  "license": "GPL",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "start:api": "node packages/api/dist",
+    "build:api": "cd packages/api && yarn build",
+    "heroku-prebuild": "rm -rf packages/{web,app}",
+    "heroku-cleanup": "cd packages/api && yarn generate",
+    "build": "yarn build:api",
+    "typecheck": "turbo run typecheck",
+    "prettify": "turbo run prettify",
+    "lint": "turbo run lint"
+  },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          ".next/**"
+        ]
+      },
+      "prettify": {},
+      "typecheck": {},
+      "lint": {},
+      "dev": {
+        "cache": false
+      }
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "16.0.1",
+    "@commitlint/config-conventional": "16.0.0",
+    "@typescript-eslint/eslint-plugin": "5.8.1",
+    "@typescript-eslint/parser": "5.8.1",
+    "babel-eslint": "10.1.0",
+    "eslint": "8.5.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-flowtype": "8.0.3",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "husky": "7.0.4",
+    "lerna": "4.0.0",
+    "lint-staged": "12.1.4",
+    "prettier": "2.5.1",
+    "rimraf": "3.0.2",
+    "turbo": "1.0.23",
+    "typescript": "4.5.4"
+  },
+  "resolutions": {
+    "prettier": "2.5.1"
+  },
+  "packageManager": "yarn@3.1.1"
+}
