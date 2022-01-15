@@ -1,0 +1,20 @@
+{
+  "name": "@libs/shared",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "description": "private file hosting service.",
+  "author": "Elias Mawa <elias@emawa.io>",
+  "private": true,
+  "homepage": "https://github.com/theluckyegg/pndome/tree/main/packages/frontend#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theluckyegg/pndome.git"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckyegg/pndome/issues"
+  }
+}
