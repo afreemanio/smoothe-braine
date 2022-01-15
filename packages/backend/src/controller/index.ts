@@ -1,2 +1,2 @@
 export * from './v1';
-// export * from './authentication';
+export * from './authentication';

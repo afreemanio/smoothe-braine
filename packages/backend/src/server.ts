@@ -11,6 +11,7 @@ import { ServerConfig } from '@libs/config';
 
 import KoaSession from 'koa-session';
 import { connectDB } from '@libs/database';
+
 import { UserController } from './controller';
 import { SessionController } from './controller/authentication';
 
@@ -59,6 +60,18 @@ app.use(
 );
 
 app.use(KoaJSON({ pretty: false, param: 'pretty' }));
+
+app.use(
+  Body({
+    // formidable: {
+    //   maxFileSize: config.MAX_BYTES,
+    //   uploadDir: config.FILE_PATH,
+    //   multiples: true,
+    // },
+    multipart: true,
+    urlencoded: true,
+  }),
+);
 
 if (ServerConfig.DEVELOPMENT) {
   app.use(logger());
