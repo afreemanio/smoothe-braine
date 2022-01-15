@@ -1,11 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strictPropertyInitialization": false,
     "strictNullChecks": false,
     /* typechecking options */
@@ -13,45 +9,20 @@
     "allowJs": true,
     "skipLibCheck": true,
     "jsx": "preserve",
-    "types": [
-      "node",
-      "react"
-    ],
+    "types": ["node", "react"],
     "baseUrl": "./src",
     "paths": {
-      "@pages/": [
-        "pages/"
-      ],
-      "@pages/*": [
-        "pages/*"
-      ],
-      "@components/": [
-        "components/"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@stores/": [
-        "stores/"
-      ],
-      "@stores/*": [
-        "stores/*"
-      ],
-      "@themes/": [
-        "themes/"
-      ],
-      "@themes/*": [
-        "themes/*"
-      ]
+      "@pages/": ["pages/"],
+      "@pages/*": ["pages/*"],
+      "@components/": ["components/"],
+      "@components/*": ["components/*"],
+      "@stores/": ["stores/"],
+      "@stores/*": ["stores/*"],
+      "@themes/": ["themes/"],
+      "@themes/*": ["themes/*"]
     },
     "isolatedModules": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
