@@ -15,7 +15,7 @@ import {
   UserRoleType,
   UserValues,
 } from '@libs/shared';
-import { JWTGuard, ParamGuard, SchemaGuard } from '@backend/middleware';
+import { ParamGuard, SchemaGuard } from '@backend/middleware';
 
 import { UserHelper } from '.';
 
@@ -50,7 +50,7 @@ router.post('/', SchemaGuard(CreateUserSchema), async (ctx: ParameterizedContext
 /**
  * get user account
  */
-router.get('/me', JWTGuard(), RoleGuard([UserRoleType.USER]), async (ctx: ParameterizedContext) => {
+router.get('/me', RoleGuard([UserRoleType.USER]), async (ctx: ParameterizedContext) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const user = await UserHelper.findById((ctx.state as any).userId);
   if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
@@ -61,79 +61,54 @@ router.get('/me', JWTGuard(), RoleGuard([UserRoleType.USER]), async (ctx: Parame
 /**
  * get all users
  */
-router.get(
-  '/',
-  JWTGuard(),
-  RoleGuard([UserRoleType.ADMIN]),
-  ParamGuard(SearchSchema),
-  async (ctx: ParameterizedContext) => {
-    const users = await UserHelper.findAll(ctx.params);
-    ctx.body = users;
-  },
-); // {get} /user/
+router.get('/', RoleGuard([UserRoleType.ADMIN]), ParamGuard(SearchSchema), async (ctx: ParameterizedContext) => {
+  const users = await UserHelper.findAll(ctx.params);
+  ctx.body = users;
+}); // {get} /user/
 
 /**
  * get a user by id
  */
-router.get(
-  '/:id',
-  JWTGuard(),
-  RoleGuard([UserRoleType.USER]),
-  ParamGuard(IdSchema),
-  async (ctx: ParameterizedContext) => {
-    const { id } = ctx.params;
+router.get('/:id', RoleGuard([UserRoleType.USER]), ParamGuard(IdSchema), async (ctx: ParameterizedContext) => {
+  const { id } = ctx.params;
 
-    const user = await UserHelper.findById(id);
-    if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
+  const user = await UserHelper.findById(id);
+  if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
 
-    ctx.body = user;
-  },
-); // {get} /user/:id
+  ctx.body = user;
+}); // {get} /user/:id
 
 /**
  * activate a user
  */
-router.post(
-  '/:id',
-  JWTGuard(),
-  RoleGuard([UserRoleType.MODERATOR]),
-  ParamGuard(IdSchema),
-  async (ctx: ParameterizedContext) => {
-    const { id } = ctx.params;
+router.post('/:id', RoleGuard([UserRoleType.MODERATOR]), ParamGuard(IdSchema), async (ctx: ParameterizedContext) => {
+  const { id } = ctx.params;
 
-    const user = await UserHelper.findById(id);
+  const user = await UserHelper.findById(id);
 
-    if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
+  if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
 
-    ctx.body = await UserHelper.activate(id);
-  },
-); // {post} /user/:id
+  ctx.body = await UserHelper.activate(id);
+}); // {post} /user/:id
 
 /**
  * deactivate a user
  */
-router.delete(
-  '/:id',
-  JWTGuard(),
-  RoleGuard([UserRoleType.MODERATOR]),
-  ParamGuard(IdSchema),
-  async (ctx: ParameterizedContext) => {
-    const { id } = ctx.params;
+router.delete('/:id', RoleGuard([UserRoleType.MODERATOR]), ParamGuard(IdSchema), async (ctx: ParameterizedContext) => {
+  const { id } = ctx.params;
 
-    const user = await UserHelper.findById(id);
+  const user = await UserHelper.findById(id);
 
-    if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
+  if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.NOT_FOUND.status, 'user does not exist');
 
-    ctx.body = await UserHelper.deactivate(id);
-  },
-); // {delete} /user/:id
+  ctx.body = await UserHelper.deactivate(id);
+}); // {delete} /user/:id
 
 /**
  * add a role to a user
  */
 router.post(
   '/:id/:roleId',
-  JWTGuard(),
   RoleGuard([UserRoleType.ADMIN]),
   ParamGuard(RoleSchema),
   async (ctx: ParameterizedContext) => {
@@ -160,7 +135,6 @@ router.post(
  */
 router.delete(
   '/:id/:role',
-  JWTGuard(),
   RoleGuard([UserRoleType.ADMIN]),
   ParamGuard(RoleSchema),
   async (ctx: ParameterizedContext) => {

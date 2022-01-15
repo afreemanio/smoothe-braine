@@ -78,7 +78,7 @@ if (ServerConfig.DEVELOPMENT) {
 
   API.use(['/u', '/user'], UserController.routes());
 
-  API.use(['/authenticate'], SessionController.routes());
+  // API.use(['/authenticate'], SessionController.routes());
   API.use(['/auth'], SessionController.routes());
 
   router.use('/api/v1', API.routes());

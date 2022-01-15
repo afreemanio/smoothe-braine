@@ -14,6 +14,8 @@ export const SchemaGuard = (Schema: Joi.ObjectSchema) => {
     if (error) {
       ctx.status = StatusCodes.CLIENT_ERROR.BAD_REQUEST.status;
       ctx.body = [];
+      console.log(ctx.request.body, ctx.request.query);
+
       error.details.forEach((e) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (ctx.body as string[]).push(e.message.replace(/"/g, ''));
