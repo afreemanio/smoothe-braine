@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@backend/middleware": ["src/middleware"],
+      "@backend/middleware/*": ["src/middleware/*"]
+    }
+  }
+}
