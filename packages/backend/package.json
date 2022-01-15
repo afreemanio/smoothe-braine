@@ -1,0 +1,48 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "description": "A private file hosting service with a clean and simple user interface, and user access controls.",
+  "author": "Elias Mawa <elias@emawa.io>",
+  "private": true,
+  "homepage": "https://github.com/theluckyegg/pndome/tree/main/packages/backend#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theluckyegg/pndome.git"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "jest",
+    "watch": "nodemon --watch '../../packages/src/**/**/*' --watch '../../libs/src/**/*'  --watch 'spec/**/*' -e ts,tsx --exec ts-node -r tsconfig-paths/register -r ts-node ./src/server.ts",
+    "serve": "yarn watch",
+    "build": "tsc",
+    "start": "node ../../build/packages/backend/src/server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckyegg/pndome/issues"
+  },
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@libs/database": "0.0.1",
+    "@types/jest": "^27.0.2",
+    "@types/jsonwebtoken": "^8.5.6",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.3",
+    "@types/koa-json": "^2.0.20",
+    "@types/koa-logger": "^3.1.2",
+    "@types/koa-router": "^7.4.4",
+    "@types/koa-session": "^5.10.4",
+    "@types/koa-websocket": "^5.0.7",
+    "@types/koa__cors": "^3.0.3",
+    "file-type": "^16.5.3",
+    "koa": "^2.13.3",
+    "koa-body": "^4.2.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-jwt": "^4.0.3",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^10.1.1",
+    "koa-session": "^6.2.0",
+    "koa-websocket": "^6.0.0"
+  }
+}

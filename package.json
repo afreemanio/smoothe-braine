@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "yarn eslint . --ext .js,.ts,.tsx",
     "serve": "concurrently 'yarn serve:api' 'yarn serve:web'",
-    "serve:api": "yarn workspace backend serve",
+    "serve:api": " ser serve",
     "serve:web": "yarn workspace frontend serve"
   },
   "prisma": {
