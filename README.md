@@ -15,3 +15,13 @@
 ## Color Palette
 
     #D9A5B2
+
+## Packages
+
+### Back-end
+```
+```
+
+### Front-end
+```
+```

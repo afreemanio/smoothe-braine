@@ -1,0 +1,55 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DB_MYSQL_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  userId   String    @db.VarChar(16)
+  email    String    @unique @db.VarChar(255)
+  username String    @unique @db.VarChar(255)
+  password String    @db.VarChar(255)
+  deleted  DateTime?
+  created  DateTime  @default(now())
+  updated  DateTime  @updatedAt
+
+  roles    UserRole[]
+  sessions Session[]
+
+  @@id([userId])
+}
+
+model Role {
+  roleId    String @db.VarChar(16)
+  authority Int    @unique @db.UnsignedTinyInt
+
+  users UserRole[]
+
+  @@id([roleId])
+}
+
+model UserRole {
+  roleId  String   @db.VarChar(16)
+  userId  String   @db.VarChar(16)
+  created DateTime @default(now())
+
+  role Role @relation(fields: [roleId], references: [roleId])
+  user User @relation(fields: [userId], references: [userId])
+
+  @@id([roleId, userId])
+}
+
+model Session {
+  sessionId String   @unique @db.VarChar(64)
+  userId    String   @db.VarChar(16)
+  revoked   Boolean  @default(false)
+  created   DateTime @default(now())
+  expires   DateTime
+
+  user User @relation(fields: [userId], references: [userId])
+
+  @@id([sessionId, userId])
+}

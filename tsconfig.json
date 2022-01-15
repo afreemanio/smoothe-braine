@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "sourceMap": true,
+    "outDir": "./build",
+
+    /* typechecking options */
+    "strict": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": false,
+
+    /* module resolution options */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "typeRoots": ["./node_modules/@types"],
+
+    "forceConsistentCasingInFileNames": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+
+    "types": ["lodash", "node", "jest"],
+    "baseUrl": "./packages"
+  },
+  "exclude": ["node_modules/"]
+}
