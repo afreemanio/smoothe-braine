@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import { useMediaQuery, useMultiStyleConfig, Button } from '@chakra-ui/react';
+import { useMultiStyleConfig } from '@chakra-ui/react';
 import Link from 'next/link';
 import { Box, Link as ChakraLink, Stack } from '@chakra-ui/layout';
 import { useDispatch, useState } from '@stores/StateProvider';
@@ -22,7 +22,7 @@ export const DesktopNavigation = (props: DesktopNavigationProps) => {
 
     dispatch({
       authentication: {
-        token: '',
+        token: null,
       },
     });
   };
@@ -43,7 +43,7 @@ export const DesktopNavigation = (props: DesktopNavigationProps) => {
           </Box>
         </Stack>
         <Stack direction="row" spacing={4}>
-          {authentication ? (
+          {authentication.token ? (
             <>
               <Box>
                 <ChakraLink as={Link} href="/profile">
@@ -51,7 +51,7 @@ export const DesktopNavigation = (props: DesktopNavigationProps) => {
                 </ChakraLink>
               </Box>
               <Box>
-                <ChakraLink as={Link} href="/" onClick={Logout}>
+                <ChakraLink as={Link} href="#" onClick={Logout}>
                   logout
                 </ChakraLink>
               </Box>
