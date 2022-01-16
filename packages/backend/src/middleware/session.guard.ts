@@ -9,7 +9,8 @@ export const SessionGuard = (options?: { passthrough?: boolean }) => {
     const authorization_key = ctx.headers.authorization ?? (ctx.session as any).sessionId;
 
     if (authorization_key && authorization_key.length > 0) {
-      const sessionId = authorization_key.split(' ')[1] ?? '';
+      // const sessionId = authorization_key.split(' ')[1] ?? '';
+      const sessionId = authorization_key;
 
       if (sessionId) {
         const session = await db.session.findFirst({
