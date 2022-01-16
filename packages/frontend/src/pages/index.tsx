@@ -7,7 +7,7 @@ import CreateLobbyTool from '@components/game/CreateLobbyTool';
 
 const Index = () => {
   return (
-    <DefaultLayout> hi
+    <DefaultLayout>
       <Stack direction="row" spacing={4} justifyContent="space-between">
         <JoinTool />
         <CreateLobbyTool />
