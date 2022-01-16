@@ -7,7 +7,7 @@ const CreateLobbyTool = () => {
     <Stack direction="column" spacing={4} display="flex" width="100%" justifyContent="space-between">
       <Input placeholder="enter your nickname" />
       <Checkbox defaultIsChecked>Private Lobby</Checkbox>
-      <Button variantColor="blue">Create Lobby</Button>
+      <Button>Create Lobby</Button>
     </Stack>
   );
 };
