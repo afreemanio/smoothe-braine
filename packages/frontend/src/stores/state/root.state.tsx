@@ -24,7 +24,7 @@ export const useHydrate = ({ state, cookies }): RootStore => {
 
   return {
     useState: (selector) => storeRef.current[selector],
-    useDispatch: (_state: RootState) => {
+    useDispatch: (_state: Partial<RootState>) => {
       for (const _store in _state) {
         cookieStorage.setCookie(_store, JSON.stringify(_state[_store]));
         storeRef.current[_store] = {
