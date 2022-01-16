@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Checkbox, Input, Stack } from '@chakra-ui/react';
+import { Button, Checkbox, Input, Stack } from '@chakra-ui/react';
 
 const CreateLobbyTool = () => {
   return (

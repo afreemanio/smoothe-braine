@@ -32,6 +32,7 @@
     "@chakra-ui/react": "^1.7.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@libs/shared": "0.0.1",
     "@types/react": "17.0.13",
     "eslint-config-next": "11.0.1",
     "framer-motion": "^5.3.3",
