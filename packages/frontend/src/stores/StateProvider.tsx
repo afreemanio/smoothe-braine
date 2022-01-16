@@ -16,12 +16,12 @@ export const StateProvider = ({ children, cookies, state }: StateProviderProps) 
   return <RootContext.Provider value={store}>{children}</RootContext.Provider>;
 };
 
-export const useState = <K extends keyof RootState>(selector: K) => {
+export const useState = <K extends keyof RootState>(selector?: K) => {
   const store = useContext(RootContext);
-  return store.useState(selector);
+  return store?.useState(selector);
 };
 
-export const useDispatch = (state: Partial<RootState>) => {
+export const useDispatch = () => {
   const store = useContext(RootContext);
-  return store.useDispatch(state);
+  return store.useDispatch;
 };
