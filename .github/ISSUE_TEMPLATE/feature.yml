@@ -1,0 +1,27 @@
+name: 💡 Feature Request
+description: Tell describe a problem my software could solve but doesn't.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem could smoothe-brane solve that it doesn't?
+      placeholder: |-
+        I want a million dollars, but smoothe-brane doesn't make me any money.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Solution Brainstorm
+      description: I know you have many bright ideas to share ... share away!
+      placeholder: |-
+        Add free money to smoothe-brane.
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |-
+        ## Thanks 🙏
+    validations:
+      required: false
