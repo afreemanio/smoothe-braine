@@ -2,8 +2,8 @@ import React from 'react';
 
 import DefaultLayout from '@components/layout/DefaultLayout';
 import { Text, Box, Heading, Stack, VStack, Button } from '@chakra-ui/react';
-import { ST } from 'next/dist/next-server/lib/utils';
-import { Head } from 'next/document';
+//import { ST } from 'next/dist/next-server/lib/utils';
+//import { Head } from 'next/document';
 
 const TypesOfGames = () => {
   return (
@@ -45,7 +45,8 @@ const TypesOfGames = () => {
             Speller
           </Heading>
           <Text fontSize="md">
-            The leader will say a four letter or less word. All other participants must spell out the word using their body a la YMCA style. First to spell it wins.
+            The leader will say a four letter or less word. All other participants must spell out the word using their
+            body a la YMCA style. First to spell it wins.
           </Text>
           <Button type="submit">Select</Button>
         </Box>
