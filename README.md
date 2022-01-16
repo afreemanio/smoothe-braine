@@ -66,7 +66,7 @@ Sorry! This is a hackathon project - we are **not accepting contributions** at t
 
 ## Contact
 
-Andrew Freeman - [@afreemanio](https://twitter.com/afreemanio) - andrewfreeman234@gmail.com
+Andrew Freeman - [@afreemanio](https://twitter.com/afreemanio) - andrew@afreeman.io
 
 Project Link: [https://github.com/afreemanio/smoothe-braine](https://github.com/afreemanio/smoothe-braine)
 
