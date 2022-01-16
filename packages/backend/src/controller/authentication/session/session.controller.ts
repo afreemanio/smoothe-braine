@@ -23,6 +23,7 @@ router.post('/login', SchemaGuard(LoginSchema), async (ctx: ParameterizedContext
 
   const result = await SessionHelper.login(data);
   if (result) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (ctx.session as any).sessionId = result.session.sessionId;
     ctx.status = SUCCESS.OK.status;
     ctx.body = result;

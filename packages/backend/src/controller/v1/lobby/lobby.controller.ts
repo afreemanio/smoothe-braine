@@ -33,11 +33,10 @@ const router: Router = new Router();
 router.get('/', async (ctx: ParameterizedContext) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ctx.body = 'Hello World';
-
 }); // {get} /user/me
 
 router.post('/', SessionGuard(), RoleGuard([UserRoleType.USER]), async (ctx: ParameterizedContext) => {
-// router.post('/', async (ctx: ParameterizedContext) => {
+  // router.post('/', async (ctx: ParameterizedContext) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const myUserId: string = (ctx.state as any).userId;
 
@@ -45,8 +44,5 @@ router.post('/', SessionGuard(), RoleGuard([UserRoleType.USER]), async (ctx: Par
 
   ctx.body = result;
 }); // {get} /user/me
-
-
-
 
 export { router as LobbyController };

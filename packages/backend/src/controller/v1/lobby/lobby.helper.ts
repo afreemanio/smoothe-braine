@@ -6,17 +6,15 @@ import { db } from '@libs/database';
 import { genHash } from '@libs/utility';
 import { DateTime } from 'luxon';
 
-
 const makeid = (length) => {
-  var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * 
-charactersLength));
- }
- return result;
-}
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
 
 /**
  * create a new lobby
@@ -24,8 +22,7 @@ charactersLength));
  * @returns database result
  */
 const create = async (userId: string) => {
-
-  const currentDateTime = DateTime.now().plus({minutes: 15});
+  const currentDateTime = DateTime.now().plus({ minutes: 15 });
 
   const uniqueId = makeid(6);
 
@@ -36,7 +33,7 @@ const create = async (userId: string) => {
       host: {
         connect: {
           userId: userId,
-        }
+        },
       },
     },
   });

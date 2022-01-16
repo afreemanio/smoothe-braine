@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 
-import { RootState, RootStore, useHydrate } from './state/root.state.ts';
+import { RootState, RootStore, useHydrate } from './state/root.state';
 
 export const RootContext = createContext<RootStore>(null);
 
