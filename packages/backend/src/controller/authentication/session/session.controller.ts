@@ -19,11 +19,11 @@ router.post('/login', SchemaGuard(LoginSchema), async (ctx: ParameterizedContext
   const data: LoginValues = ctx.data;
 
   const user = await UserHelper.findByUsername(data.username);
-  if (_.isEmpty(user))
-    ctx.throw(CLIENT_ERROR.UNAUTHORIZED.status, CLIENT_ERROR.UNAUTHORIZED.message);
+  if (_.isEmpty(user)) ctx.throw(CLIENT_ERROR.UNAUTHORIZED.status, CLIENT_ERROR.UNAUTHORIZED.message);
 
   const result = await SessionHelper.login(data);
   if (result) {
+    (ctx.session as any).sessionId = result.session.sessionId;
     ctx.status = SUCCESS.OK.status;
     ctx.body = result;
   } else {
