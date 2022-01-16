@@ -18,6 +18,7 @@ model User {
 
   roles    UserRole[]
   sessions Session[]
+  lobbies Lobby[]
 
   @@id([userId])
 }
@@ -53,3 +54,23 @@ model Session {
 
   @@id([sessionId, userId])
 }
+
+
+model Lobby {
+  lobbyId String   @unique @default(uuid())
+  lobbyPublicCode     String          @db.VarChar(6)
+  revoked   Boolean  @default(false)
+  created   DateTime @default(now())
+  expires   DateTime
+
+  hostUserId    String   @db.VarChar(16)
+  host User @relation(fields: [hostUserId], references: [userId])
+
+
+  @@id([lobbyId])
+  @@index([lobbyId, lobbyPublicCode])
+
+}
+
+
+

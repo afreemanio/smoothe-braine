@@ -12,7 +12,7 @@ import { ServerConfig } from '@libs/config';
 import KoaSession from 'koa-session';
 import { connectDB } from '@libs/database';
 
-import { UserController } from './controller';
+import { LobbyController, UserController } from './controller';
 import { SessionController } from './controller/authentication';
 
 /************************************************
@@ -89,6 +89,7 @@ if (ServerConfig.DEVELOPMENT) {
   /* api/v1 */
   const API: Router = new Router();
 
+  API.use(['/l', '/lobby'], LobbyController.routes());
   API.use(['/u', '/user'], UserController.routes());
 
   // API.use(['/authenticate'], SessionController.routes());
