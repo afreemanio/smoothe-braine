@@ -3,10 +3,7 @@ import { ParameterizedContext } from 'koa';
 
 import { StatusCodes } from '@libs/shared';
 
-export const ParamGuard = (
-  Schema: Joi.ObjectSchema,
-  options: { unknown: boolean } = { unknown: false },
-) => {
+export const ParamGuard = (Schema: Joi.ObjectSchema, options: { unknown: boolean } = { unknown: false }) => {
   return async (ctx: ParameterizedContext, next: () => Promise<void>) => {
     const params = ctx.params;
     const { value, error } = Schema.validate(params, {

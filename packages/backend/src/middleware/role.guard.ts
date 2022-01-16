@@ -13,7 +13,7 @@ export const RoleGuard = (roles: RoleType[], options?: { passthrough: boolean })
     //   include: { role: true },
     // });
 
-    if (!ctx.session){
+    if (!ctx.session) {
       return ctx.throw(CLIENT_ERROR.UNAUTHORIZED.status, CLIENT_ERROR.UNAUTHORIZED.message);
     }
 

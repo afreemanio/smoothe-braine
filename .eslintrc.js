@@ -22,15 +22,15 @@ module.exports = {
         argsIgnorePattern: '^_',
       },
     ],
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none'],
-        allowSeparatedGroups: true,
-      },
-    ],
+    // 'sort-imports': [
+    //   'error',
+    //   {
+    //     ignoreCase: false,
+    //     ignoreDeclarationSort: false,
+    //     ignoreMemberSort: false,
+    //     memberSyntaxSortOrder: ['all', 'single', 'multiple', 'none'],
+    //     allowSeparatedGroups: true,
+    //   },
+    // ],
   },
 };
