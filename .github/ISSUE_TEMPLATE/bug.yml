@@ -1,0 +1,51 @@
+name: 🐞 Bug Report
+description: Tell us about something that's not working the way we (probably) intend.
+body:
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: Where are you using this software?
+      options:
+        - Docker
+        - Native
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: 1.0.0 ← should look like this (check the footer)
+      description: What version are you running?
+    validations:
+      required: false
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce
+      description: How can we see what you're seeing? Be specific!
+      placeholder: |-
+        1. foo
+        2. bar
+        3. baz
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Result
+      description: Logs? Screenshots? Please!
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |-
+        ## Thanks 🙏
+    validations:
+      required: false

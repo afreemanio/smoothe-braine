@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support Request
+    url: https://afreeman.io/contact
+    about: Contact Andrew Freeman for support requests.
+  - name: Ask a question about Docker vs. Hardware
+    url: https://afreeman.io/contact
+    about: Please contact Andrew Freeman for questions about Docker/Hardware differences.
+  - name: Report a security vulnerability
+    url: https://afreeman.io/contact
+    about: Please contact Andrew Freeman directly, for responsible disclosure.
