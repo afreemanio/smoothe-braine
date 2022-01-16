@@ -1,13 +1,17 @@
 import React from 'react';
 
 import DefaultLayout from '@components/layout/DefaultLayout';
-import { Heading } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import JoinTool from '@components/game/JoinTool';
+import CreateLobbyTool from '@components/game/CreateLobbyTool';
 
 const Index = () => {
   return (
     <DefaultLayout>
-      <JoinTool />
+      <Stack direction="row" spacing={4} justifyContent="space-between">
+        <JoinTool />
+        <CreateLobbyTool />
+      </Stack>
     </DefaultLayout>
   );
 };
