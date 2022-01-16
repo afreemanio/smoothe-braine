@@ -12,11 +12,7 @@ export const DefaultLayoutTheme = {
           display: 'none',
           '.user-menu-info-bar': {
             borderRadius: 'xl',
-            // color,
             background,
-            // svg: {
-            //   color,
-            // },
           },
         },
         '@media only screen and (max-width: 480px)': {
