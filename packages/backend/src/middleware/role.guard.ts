@@ -12,7 +12,12 @@ export const RoleGuard = (roles: RoleType[], options?: { passthrough: boolean })
     //   where: { userId: (ctx.session as any).user.userId },
     //   include: { role: true },
     // });
-    const userRoles = ctx.state.roles;
+
+    if (!ctx.session){
+      return ctx.throw(CLIENT_ERROR.UNAUTHORIZED.status, CLIENT_ERROR.UNAUTHORIZED.message);
+    }
+
+    const userRoles = ctx.session.user.roles;
 
     // FIXME: overengineered lol, but it works
     // NOTE: Reduce to highest authority (lowest number)
