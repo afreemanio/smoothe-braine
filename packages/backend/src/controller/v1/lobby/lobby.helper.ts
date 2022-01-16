@@ -4,25 +4,43 @@ import { uid } from 'uid/secure';
 import { UserValues } from '@libs/shared';
 import { db } from '@libs/database';
 import { genHash } from '@libs/utility';
+import { DateTime } from 'luxon';
+
+
+const makeid = (length) => {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
 
 /**
- * create a new user
- * @param data user data to create
+ * create a new lobby
+ * @param userId id of user that will be the host of the new lobby
  * @returns database result
  */
-const create = async ({ username, email, password }: UserValues) => {
-  const passwordHash: string = await genHash(password);
-  const userId: string = uid(16);
-  const result = await db.user.create({
+const create = async (userId: string) => {
+
+  const currentDateTime = DateTime.now().plus({minutes: 15});
+
+  const uniqueId = makeid(6);
+
+  const result = await db.lobby.create({
     data: {
-      userId,
-      username,
-      password: passwordHash,
-      email,
-      roles: { create: { roleId: 'user' } },
+      lobbyPublicCode: uniqueId,
+      expires: currentDateTime.toJSDate(),
+      host: {
+        connect: {
+          userId: userId,
+        }
+      },
     },
   });
-  return omit(result, ['password', 'deleted']);
+  return result;
 };
 
 /**
@@ -142,7 +160,7 @@ const findByUsername = async (username: string) => {
   return omit(result, ['password']);
 };
 
-export const UserHelper = {
+export const LobbyHelper = {
   create,
   patch,
   activate,
