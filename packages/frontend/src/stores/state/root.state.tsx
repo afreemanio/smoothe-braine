@@ -6,9 +6,9 @@ import { hydrateLobbyStore, LobbyState } from './lobby.state';
 import { UserState, hydrateUserStore } from './user.state';
 
 export interface RootState {
-  authentication: AuthState;
-  user: UserState;
-  lobby: LobbyState;
+  authentication: Partial<AuthState>;
+  user: Partial<UserState>;
+  lobby: Partial<LobbyState>;
 }
 
 export type StateSelector = <K extends keyof RootState>(selector: K) => RootState[K];

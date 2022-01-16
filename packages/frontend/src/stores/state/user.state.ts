@@ -4,10 +4,16 @@ const KEY = 'user';
 
 export interface UserState {
   username: string;
+  user_id: string;
+  email: string;
+  roles: string[];
 }
 
 const defaultState: UserState = {
   username: null,
+  user_id: null,
+  email: null,
+  roles: [],
 };
 
 export const createUserState = (state: UserState = defaultState) => {

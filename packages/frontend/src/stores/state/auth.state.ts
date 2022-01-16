@@ -3,7 +3,7 @@ import { cookieStorage } from '@libs/utility/src/cookie-storage';
 const KEY = 'authentication';
 
 export interface AuthState {
-  token: string;
+  token?: string;
 }
 
 const defaultState: AuthState = {

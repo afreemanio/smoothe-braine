@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import { useMediaQuery, useMultiStyleConfig, Button } from '@chakra-ui/react';
 import Link from 'next/link';
 import { Box, Link as ChakraLink, Stack } from '@chakra-ui/layout';
-import { useState } from '@stores/StateProvider';
+import { useDispatch, useState } from '@stores/StateProvider';
 
 interface DesktopNavigationProps {
   children?: React.ReactNode;
@@ -11,8 +11,21 @@ interface DesktopNavigationProps {
 export const DesktopNavigation = (props: DesktopNavigationProps) => {
   const { desktopNavigation } = useMultiStyleConfig('DesktopNavigationTheme', {});
 
+  const dispatch = useDispatch();
+
   const authentication = useState('authentication');
-  authentication.token = '2';
+  const user = useState('user');
+
+  const Logout = (event: SyntheticEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    dispatch({
+      authentication: {
+        token: '',
+      },
+    });
+  };
 
   return (
     <Box sx={desktopNavigation}>
@@ -30,16 +43,33 @@ export const DesktopNavigation = (props: DesktopNavigationProps) => {
           </Box>
         </Stack>
         <Stack direction="row" spacing={4}>
-          <Box>
-            <ChakraLink as={Link} href="/login">
-              Login
-            </ChakraLink>
-          </Box>
-          <Box>
-            <ChakraLink as={Link} href="/create-account">
-              Register
-            </ChakraLink>
-          </Box>
+          {authentication ? (
+            <>
+              <Box>
+                <ChakraLink as={Link} href="/profile">
+                  {user.username}
+                </ChakraLink>
+              </Box>
+              <Box>
+                <ChakraLink as={Link} href="/" onClick={Logout}>
+                  logout
+                </ChakraLink>
+              </Box>
+            </>
+          ) : (
+            <>
+              <Box>
+                <ChakraLink as={Link} href="/login">
+                  Login
+                </ChakraLink>
+              </Box>
+              <Box>
+                <ChakraLink as={Link} href="/create-account">
+                  Register
+                </ChakraLink>
+              </Box>
+            </>
+          )}
         </Stack>
       </Stack>
     </Box>
