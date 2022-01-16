@@ -5,7 +5,7 @@
 !**/sample*.env
 proxy/
 docker-compose.yml
-
+packages/backend/video_rooms/
 
 node_modules
 build

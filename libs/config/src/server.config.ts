@@ -9,7 +9,7 @@ export const server_config: {
   ADMIN_PASS: string;
 } = {
   DEVELOPMENT: !!process.env.DEVELOPMENT ?? true,
-  PORT: process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT) : 2000,
+  PORT: process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT) : 2001,
   SESSION_KEYS: process.env.SESSION_KEYS
     ? JSON.parse(process.env.SESSION_KEYS)
     : ['super-duper-secret', 'even-more-secret'],
