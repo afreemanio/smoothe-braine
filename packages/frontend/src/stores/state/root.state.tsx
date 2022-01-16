@@ -2,11 +2,13 @@ import { cookieStorage } from '@libs/utility/src/cookie-storage';
 import { useRef } from 'react';
 
 import { AuthState, hydrateAuthStore } from './auth.state';
+import { hydrateLobbyStore, LobbyState } from './lobby.state';
 import { UserState, hydrateUserStore } from './user.state';
 
 export interface RootState {
   authentication: AuthState;
   user: UserState;
+  lobby: LobbyState;
 }
 
 export type StateSelector = <K extends keyof RootState>(selector: K) => RootState[K];
@@ -20,6 +22,7 @@ export const useHydrate = ({ state, cookies }): RootStore => {
   const storeRef = useRef({
     authentication: hydrateAuthStore({ state: state?.authentication ?? null, cookies }),
     user: hydrateUserStore({ state: state?.user ?? null, cookies }),
+    lobby: hydrateLobbyStore({ state: state?.lobby ?? null, cookies }),
   });
 
   return {
